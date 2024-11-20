@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var Categories = ["All","Footwear","Fashion","Jewelery","Electronics"]
+        function LoadPage() {
+            var ol1 = document.getElementById("categoryList");
+            Categories.map(category =>{
+            var li = document.createElement("li");
+            li.innerText = category
+            ol1.appendChild(li);
+            })
+
+
+            var select = document.getElementById("select");
+            Categories.map(category=>{
+                var option = document.createElement("option")
+                option.innerText = category ;
+                select.appendChild(option);
+            })
+
+
+            var ul = document.querySelector("ul");
+            Categories.map(category=>{
+                var link = document.createElement("a");
+                link.href ="#";
+                link.innerText = category;
+    link.style.marginRight = "50px"
+                ul.appendChild(link);
+
+            })
+        }
+
+
+        
+    </script>
+</head>
+<body class="container-fluid">
+    <div>
+        <button class="btn btn-primary" onclick="LoadPage()">Load</button>
+    </div>
+    <br>
+    <div>
+        <ol id="categoryList">
+
+        </ol>
+        <br><br>
+        <select class="mb-4" id="select">
+            
+
+        </select>
+    </div>
+
+    <br> <br>
+    <nav class="mt-5 ">
+        <h3>Select Categories</h3>
+    <ul class=""></ul>
+
+    </nav>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+        #slider {
+            width: 5px;
+            height: 35px;
+            background-color: black;
+            position: absolute;
+            bottom: 10px;
+        }
+        .progress-container {
+            position: relative;
+            height: 35px; 
+        }
+    </style>
+    <script>
+        function heightinputType() {
+            let selectIn = document.getElementById("heightselect");
+            let cminput = document.getElementById("heightCm");
+            let ftInput = document.getElementById("heightInFeet");
+
+            if (selectIn.value == 'feet-in') {
+                cminput.classList.add('hidden');
+                ftInput.classList.remove('hidden');
+            } else {
+                cminput.classList.remove('hidden');
+                ftInput.classList.add('hidden');
+            }
+        }
+
+        function BmiCategory(bmi) {
+            if (bmi < 18.5) {
+                return { category: "UnderWeight", suggestion: "You should eat more and maintain a healthy diet." ,color :"bg-warning"  };
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                return { category: "NormalWeight", suggestion: "Great! Keep maintaining your healthy lifestyle.",color : "bg-success" };
+            } else if (bmi >= 25 && bmi < 29.9) {
+                return { category: "OverWeight", suggestion: "Consider regular exercise and a balanced diet.",color :"bg-primary"  };
+            } else {
+                return { category: "Obesity", suggestion: "Consult a healthcare provider for advice.",color :"bg-danger" };
+            }
+        }
+
+        function calculateBmi(weight, heightCm, heightFeet, heightInches, heightUnit) {
+            let heightMeters;
+            if (heightUnit === 'cm') {
+                heightMeters = heightCm / 100;
+            } else if (heightUnit == 'feet-in') {
+                let totalInches = (heightFeet * 12) + heightInches;
+                heightMeters = totalInches * 0.0254;
+            }
+            return weight / (heightMeters * heightMeters);
+        }
+
+        function CalculateClick() {
+            let weight = document.getElementById("txtweight").value;
+            let heightUnit = document.getElementById("heightselect").value;
+            let heightCm = 0, heightFeet = 0, heightInches = 0;
+            if (heightUnit === 'cm') {
+                heightCm = parseFloat(document.getElementById("txtheight").value);
+            } else if (heightUnit === 'feet-in') {
+                heightFeet = parseFloat(document.querySelector("#heightInFeet input[placeholder='Feet']").value);
+                heightInches = parseFloat(document.querySelector("#heightInFeet input[placeholder='Inches']").value);
+            }
+            if (!isNaN(weight) && ((heightUnit === 'cm' && !isNaN(heightCm)) || (heightUnit === 'feet-in' && !isNaN(heightFeet) && !isNaN(heightInches)))) {
+                let bmi = calculateBmi(weight, heightCm, heightFeet, heightInches, heightUnit);
+                let categoryData = BmiCategory(bmi);
+                document.getElementById("result").innerHTML = "Your BMI is: " + bmi.toFixed(2) + " (" + categoryData.category + ")";
+                document.getElementById("result").className = "mt-3 " + categoryData.color;
+                document.getElementById("suggestion").innerHTML = categoryData.suggestion;
+                let sliderPosition = Math.min(Math.max((bmi / 40) * 100, 0), 100);
+                document.getElementById("slider").style.left = `calc(${sliderPosition}% - 5px)`;
+            } else {
+                alert("Please enter valid weight and height values.");
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div class="p-2 bg-primary-subtle" style="width: 100%; height: 600px; border: 1px solid black; border-radius: 25px;">
+        <div class="m-2" style="color: crimson;">
+            <h1>BMI Calculator <div style="font-size: 15px;">Body Mass Index</div></h1>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <dt class="mb-2">GENDER</dt>
+                <dfn>
+                    <button class="btn btn-outline-primary text-dark" style="width: 75px;">Male</button>
+                    <button class="btn btn-outline-primary text-dark" style="width: 75px;">Female</button>
+                </dfn>
+            </div>
+            <div class="col">
+                <dt class="mb-2">AGE</dt>
+                <dfn><input type="text" class="form-control smally"></dfn>
+            </div>
+            <div id="com" class="col">
+                <img src="public/images/bm.jpg" width="500px" height="200px" alt="bmiimg">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <dt class="mb-2">WEIGHT</dt>
+                <dd><input id="txtweight" class="form-control smally" style="text-align: end;" type="text" placeholder="in Kgs"></dd>
+            </div>
+            <div class="col">
+                <dt class="mb-2">HEIGHT</dt>
+                <dd>
+                    <select id="heightselect" class="form-select" onchange="heightinputType()">
+                        <option value="cm">in cms</option>
+                        <option value="feet-in">in feet-in</option>
+                    </select>
+                    <div class="mt-2" id="heightCm">
+                        <input type="text" id="txtheight" class="form-control smally" placeholder="Centimeters">
+                    </div>
+                    <div id="heightInFeet" class="mt-2 hidden">
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control smally" placeholder="Feet" aria-label="Feet">
+                            <span class="input-group-text">ft</span>
+                            <input type="text" class="form-control smally" placeholder="Inches" aria-label="Inches">
+                            <span class="input-group-text">in</span>
+                        </div>
+                    </div>
+                </dd>
+            </div>
+            <div class="col">
+                <h1>BMI Status</h1>
+                <div class="progress-container">
+                    <div class="progress mb-5">
+                        <div class="progress-bar bg-warning me-1" style="width: 25%;"></div>
+                        <div class="progress-bar bg-success me1" style="width: 25%;"></div>
+                        <div class="progress-bar bg-orange me-1" style="width: 25%;"></div>
+                        <div class="progress-bar bg-danger me-1" style="width: 25%;"></div>
+                    </div>
+                    <div id="slider"></div>
+                </div>
+                <p id="suggestion" class="bg-light mt-3 p-2"></p>
+            </div>
+        </div>
+        <div style="justify-content: center; align-items: center; display: flex;">
+            <button class="btn btn-primary p-2 mt-2" onclick="CalculateClick()">Calculate</button>
+        </div>
+    </div>
+    <div class="mt-2">
+        <h2 class="mt-3" style="text-align: center;" id="result"></h2>
+    </div>
+</body>
+</html>

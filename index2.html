@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function AmountChange(){
+            document.getElementById("txtAmount").value = document.getElementById("rangeAmount").value;
+        }
+        function TextBoxChange(){
+            document.getElementById("rangeAmount").value = document.getElementById("txtAmount").value;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        Amount you need <input type="text" onchange="TextBoxChange()" id="txtAmount">
+    </div>
+    <div>
+        &#8377;1,00,000 <input  id="rangeAmount" onchange="AmountChange()" type="range" min="100000" max="1000000" value="100000">&#8377;10,00,000
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgba(0, 170, 255, 0.53);
+            background-size: cover;
+
+        }
+    </style>
+    <script>
+         function bodyload(){
+            window.document.images[0]
+            window.document.forms[0].elements[1].value = "Register";
+            window.document.forms[1].elements[1].value = "Login";
+        }
+        
+    </script>
+    </head>
+    <body onload="bodyload()">
+        <div>
+            <img src="public/images/img1.jpg" width="100" height="100" border="1">
+        </div>
+        <div>
+            <form>
+                <h2>Register User</h2>
+                Your Name : <input type="text"> <input type="button">
+            </form>
+        </div>
+        <div>
+            <form>
+                <h2>Login</h2>
+                Your Email : <input type="email"> <input type="button">
+            </form>
+        </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validation</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        let regExp;
+        function SetValidation(flagPath,pattern,placeholderText){
+            var ImgFlag = document.getElementById("flgimg");
+            var mbtxt = document.getElementById("txtmobile");
+            ImgFlag.src = flagPath ;
+            regExp = pattern ;
+            mbtxt.placeholder = placeholderText;
+
+        }
+        function countrychange() {
+            var contname = document.getElementById("countrylst").value;
+            var ImgFlag = document.getElementById("flgimg");
+            var mbtxt = document.getElementById("txtmobile");
+            if (contname === "India") {
+    SetValidation("../public/images/ind.jpg", /^\+91\d{10}$/, "eg: +91 and 10 digits");
+} else if (contname === "US") {
+    SetValidation("../public/images/us.jpg", /^\+\(1\)\d{3} \d{3}-\d{4}$/, "eg: +(1) 456 456-1234");
+} else if (contname === "UK") {
+    SetValidation("../public/images/uk.jpg", /^\+\(44\)\d{3} \d{4} \d{4}$/, "eg: +(44) 456 5263 4564");
+            }else{
+                ImgFlag.src = "";
+                ImgFlag.alt = "N/A";
+                mbtxt.placeholder = "Please Select Country";
+            }
+ }
+        function VerifyClick() {
+            var mb = document.getElementById("txtmobile").value;
+            var msg = document.getElementById("msg");
+            if(mb.match(regExp)){
+                document.write("Mobile Verified Successfully");
+            }else{
+                msg.innerHTML = `Invalid Mobile <br> ${document.getElementById("txtmobile").placeholder}`;
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <fieldset class="w-50">
+        <legend>Verify Your Mobile </legend>
+        <img id="flgimg" width="150" height="100">
+        <dl>
+            <dt>Select Your Country</dt>
+            <dd>
+                <select onchange="countrychange()" id="countrylst">
+                    <option value="">Select Country</option>
+                    <option value="India">India</option>
+                    <option value="US">US</option>
+                    <option value="UK">UK</option>
+                </select>
+            </dd>
+            <dt>Mobile</dt>
+            <dd><input type="text" id="txtmobile"></dd>
+        </dl>
+        <button class="btn btn-primary w-25" onclick="VerifyClick()">verify</button>
+        <p id="msg" class="mt-4 h3 text-danger"></p>
+    </fieldset>
+
+    
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inox</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function ModifyClick(){
+            document.getElementById("quickBooking").style.display ="block";
+            document.getElementById("btnBook").innerHTML = "Update";
+            document.getElementById("btnBook").className = "btn btn-success" ;
+        }
+
+
+        function Bookclick(){
+            document.getElementById("summaryContainer").style.display ="block";
+            document.getElementById("quickBooking").style.display = "none";
+
+            document.getElementById("lblMovie").innerHTML = document.getElementById("lstMovie").value;
+            document.getElementById("lblCinema").innerHTML = document.getElementById("lstCinema").value;
+            document.getElementById("lblDate").innerHTML = document.getElementById("lstDate").value;
+            document.getElementById("lblTime") .innerHTML = document.getElementById("lstTime").value;
+            document.getElementById("lblSeats").innerHTML = document.getElementById("lstSeats").value;
+           let  poster = document.getElementById("poster");
+            let screen ="";
+            let movieName= document.getElementById("lstMovie").value;
+            if (movieName === "Tiger 3") {
+                poster.src = "../public/images/tig.jpg";
+                screen = "Screen - 1";
+            } else if (movieName === "The Marvels") {
+                poster.src = "../public/images/marvel.jpg";
+                screen = "Screen - 3";
+            } else {
+                poster.src = "../public/images/placeholder.jpg";  // Placeholder image
+                screen = "Unknown Screen";
+            }
+
+        
+            document.getElementById("lblScreen").innerHTML = screen;
+
+        }
+
+        function home(){
+            document.getElementById("quickBooking").style.display = "block";
+            document.getElementById("summaryContainer").style.display = "none";
+            document.getElementById("btnBook").innerHTML = "Book";
+            document.getElementById("btnBook").className = "btn btn-danger";      
+        }
+
+    </script>
+</head>
+<body class="container-fluid">
+    <header id="quickBooking" class="bg-danger text-white justify content-center p-1"><strong font-size="5px">BookYourShow</strong>
+        <nav class="d-flex justify-content-between p-2 bg-dark text-white">
+            <div>
+                <select class="form-select" id="lstMovie">
+                    <option>Select Movie</option>
+                    <option>Tiger 3</option>
+                    <option>The Marvels</option>
+                </select>
+            </div>
+            <div>
+                <select class="form-select" id="lstCinema">
+                    <option>Select Cinema</option>
+                    <option>Inox-Movies </option>
+                    <option>Parsad-Imax</option>
+                </select>
+            </div>
+            <div>
+                <select class="form-select" id="lstDate">
+                    <option>Select Date</option>
+                    <option>Toaday 14,Nov-2023</option>
+                    <option>Tommorw 15,Nov-2023</option>
+                </select>
+            </div>
+            <div>
+                <select class="form-select" id="lstTime">
+                    <option>Select Time</option>
+                    <option>10.30am</option>
+                    <option>1.30pm</option>
+                </select>
+            </div>
+            <div>
+                <select class="form-select" id="lstSeats">
+                    <option>Select Seats</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="Bookclick()" id="btnBook" class="btn btn-danger">Book</button>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="w-50 "style="display:none;" id="summaryContainer">
+            <h2>BookingSummary</h2>
+            <div class="card p-2">
+                <img class="card-img-top" id="poster" height="400">
+                <div class="card-header">
+                    <dl>
+                        <dt>Movie</dt>
+                        <dd id="lblMovie"></dd>
+                        <dt>Cinema</dt>
+                        <dd id="lblCinema"></dd>
+                        <dt>Date</dt>
+                        <dd id="lblDate"></dd>
+                        <dt>Show Time</dt>
+                        <dd id="lblTime"></dd>
+                        <dt>Seats</dt>
+                        <dd id="lblSeats"></dd>
+                        <dt>Screen</dt>
+                    </dl>
+                </div>
+            </div>
+            <button onclick="ModifyClick()" class="btn btn-link">Modify Booking</button>
+            <button class="btn btn-link" onclick="home()">Back to Home</button>
+        </div>
+    </section>
+</body>
+</html>

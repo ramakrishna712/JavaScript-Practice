@@ -1,0 +1,58 @@
+#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: flex;
+            margin-right: 50px;
+        }
+        #green{
+            background-color: green;
+            width: 200px;
+            height: 150px;
+            margin-right: 10px;
+        }
+        #red{
+            background-color: red;
+            width: 200px;
+            height: 150px;
+            margin-right: 10px;
+        }
+        #orange{
+            background-color: orange;
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+    <script>
+        function GetColor(colorname){
+            document.querySelector("h1").style.color = colorname;
+        }
+        function ResetColor(){
+            document.querySelector("h1").style.color = 'blue';
+        }
+        function ChangeImage(){
+            document.querySelector("img").src = "../public/images/bigcat.jpg"
+        }
+        function ResetImage(){
+            document.querySelector("img").src = "../public/images/ani.jpg"
+
+        }
+        
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="green" onmouseover="GetColor(this.id)" onmouseout="ResetColor()"></div>
+        <div id="red" onmouseover="GetColor(this.id)" onmouseout="ResetColor()"></div>
+        <div id="orange" onmouseover="GetColor(this.id)" onmouseout="ResetColor()"></div>
+    </div>
+    <h1>sample Text</h1>
+    <img src="public/images/ani.jpg" alt="img" width="400px" height="300px" onmousedown="ChangeImage()" onmouseup="ResetImage()">
+    <p>Hold Down Mose Button To Launchs</p>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        #imagecontainer {
+            display :none;
+        }
+    </style>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div>
+        <div id="buttonContainer">
+            <button onclick="bodyload()" class="btn btn-primary">Load Image</button>
+        </div>
+        <div id ="LoadingContainer" class="text-center" style="display: none;">
+            <progress min="1" max="100"></progress>
+            <div id="lblStatus"></div>
+            <div id="downloadStatus"></div>
+            <div class="mt-2">
+                <button onclick="Pauseclick()"class="bi bi-pause-btn btn-danger">Pause</button>
+                <button onclick="PlayClick()" class="bi bi-play-btn btn-success">play</button>
+            </div>
+        </div>
+        <div id="imageContainer" style="display:none">
+            <img src="../public/images/marvel.jpg" width="300" height="300" alt="">
+        </div>
+    </div>
+   
+
+    <p class="align-content-center">
+
+    </p>
+
+
+
+    
+</body>
+</html>
+
+<script>
+    /*let name = prompt("Enter you name ")
+    let age = + prompt("Enter your age ")
+    let msg1 = " Hello " + name + " you age will be " + (age + 1 )+ " after one year"
+    alert(msg1);*/
+
+
+   /* let title = prompt("Enter the Title");
+    let lable = prompt("Enter the labelName");
+    let inptype = prompt("enter the input type","checkbox","text","radio","email");
+    let btntext = prompt("Enter the button text");
+var component = `
+<h1>${title}</h1>
+<dt>${lable}</dt>
+<dd><input type = ${inptype}></dd>
+<button>${btntext}</button>`
+document.write(component);*/
+
+
+    /*var word = prompt("Enter Your Text");
+    var result = word.replaceAll(" ","");
+    document.write(result);*/
+
+
+
+    /*var count = 0;
+    let name = "Ramakrishna"
+    let conv = name.toLowerCase()
+    for(let char  of conv ){
+        if(char == "r"){
+            count++
+        }
+    }
+    alert(`A repaeates ${count} times`)*/
+
+
+    /*var word = prompt("Enter Your Email");
+    var specialCharPosition = word.search(/\W/);
+    document.write(word.charAt(specialCharPosition));*/
+
+
+   /* var n = parseInt(prompt("Enter a number between 1 and 4"));
+
+switch(n) {
+    case 1:
+        document.write("One");
+        break;
+    case 2:
+        document.write("Two");
+        break;
+    case 3:
+        document.write("Three");
+        break;
+    case 4:
+        document.write("Four");
+        break;
+    default:
+        document.write("Please enter a number between 1 and 4 only");
+        break;
+}*/
+
+
+
+
+
+/*var choice = prompt("Enter the YES - y/Y Or No -n/N ?,y/n")
+switch(choice)  {
+    case "y" :
+    case "Y" :
+    document.write("You Selected YES to Continue..")
+    break;
+    case "N" :
+    case "n" :
+    document.write("You Selected NO to Stop.. ")
+    break;
+    default:
+    document.write("Please Select Either Yes Or NO ")
+}*/
+
+
+/*function Greatest( a,b,c) {
+    if(a > b && c){
+        document.write(`a=${a} is Greater than b = ${b} and c = ${c} `)
+    }else if ( b> c) {
+        document.write (`b = ${b} is greater than a = ${a} and c = ${c}`)
+
+    }else{
+        document.write(`c = ${c} is greater than a = ${a} and b =${b}`) 
+    }
+
+}
+Greatest(100,300,40)*/
+
+/*let name = prompt("Enter the Name between 4 to 10 chars ");
+function Strlen(name) {
+    
+    let length = name.length ;
+    if(length < 4){
+        document.write(" Name is too Short ");
+    }else if( length > 10 ){
+        document.write("Name is too Long");
+    }else{
+        document.write("Name Verified Successfully");
+    }
+}
+Strlen(name);*/
+
+
+/*let id = Symbol();
+let Product = {
+    name : "Mobile",
+    [id] : 1,
+    Price : 13000
+}
+for(let property in Product){
+    document.write(`${property}-${Product[property]}<br>`);
+}
+document.write(`Id=${Product[id]}`);*/
+
+
+
+/*let values = [];
+values = ["apple",20,true,"Banana",40 ,function(){"Hello Iam from Array"}]
+
+    document.write();
+    values[5]()*/
+
+
+
+/*var products  = ["Samsung TV-560000","iphone-61000","Laptop-25000"];
+var [tv,phone,laptop] = products ;
+document.write(laptop);*/
+
+
+
+/*var values = [10,20,30,40,];
+console.log(values);
+values.length = 0 ;
+console.log(values);*/
+
+/*let array = ["ram", true, 20, "20"];
+let mapped = array.map((item , index ) => ` Index - ${index} , Item - ${item}<br>`);
+document.write(mapped);
+
+let values = [5000,20000,300,1500000,1500]
+for (let property in values){
+    document.write(`${property}:${values[property]}<br>`);
+}*/
+
+/*var h1 = document.createElement("h1");
+h1.innerHTML = "Ramakrishna"
+document.body.appendChild(h1)*/
+
+
+/*let json = {
+    "name" : "Ramakrishna",
+    "age" : 23,
+    "student" :true,
+    "job" : "Developer"
+}
+document.write(`Name is ${json.name}<br> Age is ${json.age}<br> Student is ${json.student}<br>Job is ${json.job}<br>`)
+
+alert(json.name)
+delete json.student;
+delete json.age;
+console.log(json)
+document.write(`is Name  available ? ${"name" in json}`)*/
+
+/*var tv = {
+    "Name": "Samsung Tv",
+    "Price": 45000.00,
+    "Stock": true
+}
+function MesAlert(){
+
+    return Object.keys(tv).map(key=> `${key} : ${tv[key]}`).join('\n');
+}
+alert(MesAlert());
+
+fetch(url)*/
+
+
+
+/*var data = new Map();
+data.set("HTML","It is a markup Language.");
+data.set(1,{Name :"Samsung Tv",Price:45000.00});
+document.write(data.get(1).Price + "<br>");
+for(var key of data.entries()){
+    document.write(key+"<br>")
+}*/
+
+
+/*var mfd = new Date("2001-04-13 7:30:59.30")
+var months = ["January","Febuary","March","April","May","June","July","August","September","November","December"];
+var weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+document.write(`mfd = ${weekdays[mfd.getDay()]},${mfd.getDate()}-${months[mfd.getMonth()]}-${mfd.getFullYear()}-${mfd.getHours()}hrs-${mfd.getMinutes()}mins`);*/
+
+
+/*function bodyload(){
+    var now = new Date();
+    var hrs = now.getHours();
+    var para = document.querySelector("p");
+    var pic = document.querySelector("img");
+
+
+    if(hrs>=0 && hrs <= 12){
+        para.innerHTML = "Good Morning";
+        pic.src="../public/images/gm.gf.gif";
+    }
+    else if(hrs >= 13 && hrs <= 17){
+        para.innerHTML = "Good Afternoon"
+        pic.src = "../public/images/ga.gr.gif";
+    } 
+    else if(hrs>=18 && hrs <=23){
+        para.innerHTML = "Good Night";
+        pic.src="../public/images/gn.gf.gif"
+    }
+}*/
+/*var m1, m2, m3 ;
+
+function msg1() {
+    document.querySelector("p").innerHTML = "Hello  !";
+}
+function msg2() {
+    document.querySelector("p").innerHTML = "How are You ?";
+}
+function msg3() {
+    document.querySelector("p").innerHTML = "welcome to Javascript";
+}
+function bodyload(){
+    m1 = setTimeout(msg1,3000);
+    m2 = setTimeout(msg2,6000);
+    m3 =setTimeout(msg3,10000);
+}
+
+function cancel() {
+    clearTimeout(m2);
+}*/
+
+/*var count = 1;
+function Progress() {
+    var pic = document.querySelector("img");
+    
+    if(count==100){
+        document.getElementById("imageContainer").style.display = "block";
+        document.getElementById("LoadingContaier").style.display = "none";
+        pic.style.animationName = "Zoom";
+        pic.style.animationDuration = "3s";
+        setInterval(Progress,100)
+        count = 100;
+    }else
+    count++;
+    document.querySelector("progress").value=count;
+    document.getElementById("lblStatus").innerHTML = `${count}% Completed `;
+}
+
+var interval ;
+function bodyload() {
+    document.getElementById("buttonContainer").style.display = "none";
+    document.getElementById("LoadingContainer").style.display = "block";
+    interval = setInterval(Progress,100);
+}
+
+
+
+function Pauseclick() {
+  
+   clearInterval(interval,);
+   document.getElementById("downloadStatus").innerHTML = "(Paused)";
+}
+function PlayClick() {
+    interval = setInterval(Progress,100);
+    document.getElementById("downloadStatus").innerHTML ="";
+}*/
+
+
+
+var product = {
+    Name : "Samsung TV",
+    Price :45000.00,
+    stock : true
+};
+for(var property in product){
+    document.write(`${property}[${typeof product[property]}]<br>`);
+}
+
+
+</script>
+
+

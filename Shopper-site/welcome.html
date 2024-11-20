@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function bodyload() {
+            var lblUser = document.getElementById("lbluser");
+            if(localStorage.getItem("uid")==null){
+                location.href="locStoLogin.html"
+            }else{
+                lblUser.innerHTML = localStorage.getItem("uid");
+            }
+
+        }
+
+        function SignOut() {
+            localStorage.removeItem("uid");
+            location.href = "locStoLogin.html"
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <h2>Welcome - <span id="lbluser" > </span>    <br>
+        <a href="javascript:SignOut()">Signout</a>
+    </h2>
+</body>
+</html>

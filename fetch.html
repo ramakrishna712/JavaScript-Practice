@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .exchange{
+            border: 1px solid rgba(128, 128, 128, 0.571);
+            padding: 10px;
+            width: 50%;
+        }
+        .lit-text {
+            color: rgba(128, 128, 128, 0.831);
+        }
+        #btn1 {
+            width: 48%;
+            padding: 20px;
+            background-color: rgb(243, 157, 8);
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: white;
+        }
+        #btn2{
+            width: 48%;
+            padding: 20px;
+            background-color: rgb(255, 77, 0);
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+
+        }
+    </style>
+
+    <script type="text/javascript">
+        function GetData() {
+            fetch("../data/product.json")
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(data){
+                document.getElementById("ProductImage").src = data.image;
+                document.getElementById("ProductTitle").innerHTML = data.title;
+                document.getElementById("ProductRating").innerHTML = `<span class= "badge bg-success text-white p-2 
+                rounded rounded-2 me-2">${data.rating.rate}<span class="bi bi-star-fill p-1"></span></span><span class="fw-bold text-secondary">${data.rating.count} Ratings & ${data.rating.reviews} Reviews </span>`;
+                document.getElementById("ProductPrice").innerHTML = data.price.toLocaleString("en-in",{style : "currency",currency:"INR"});
+
+                data.offers.map(offer =>{
+                    var li = document.createElement("li");
+                    li.className = "bi bi-tag-fill mb-4 text-success";
+                    li.innerHTML = `<span class="text-dark">${offer}</span>`;
+                    document.getElementById("ProductOffers").appendChild(li);
+                })
+            })      
+        }
+        function btncart() {
+            alert("Added to Cart")
+        }
+        function btnbuy() {
+            alert("Are you Sure to Buy")
+        }
+
+    </script>
+</head>
+<body class="container-fluid" onload="GetData()">
+    <div class="row">
+        <div class="col-4">
+            <img id="ProductImage" width="100%" height="80%">
+            <div class="mt-2" style="display: flex; justify-content: space-between;">
+                <button onclick="btncart()" id="btn1" class="bi bi-cart-fill pe-2" style="border: none;">ADD TO CART</button>
+                <button onclick="btnbuy()" id="btn2" class="bi bi-lightning-fill pe-2" style="border:none;">BUY NOW</button>
+            </div>
+        </div>
+        <div class="col-8 ">
+            <h1 id="ProductTitle"></h1>
+            <div id="ProductRating"></div>
+            <div class="mt-2 h2" id="ProductPrice"></div>
+            <div>
+                <ul  class="list-unstyled" id="ProductOffers"></ul>
+            </div>
+            <div class="exchange">
+                <input type="radio"><span> Buy without Exchange <strong style="margin-left: 150px;">₹55,999</strong> </span>
+
+            </div>
+            <div class="exchange">
+                <input type="radio"><span> Buy without Exchange <strong class="lit-text" style="margin-left: 150px;">up to ₹48,000 off </strong> </span>
+               <p class="text-danger mt-2">Enter pincode to check if exchange is availble</p> 
+
+            </div>
+
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakestoreAutoLoad</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function LoadProducts(id) {
+            fetch(`https://fakestoreapi.com/products/${id}`)
+            .then(response=>{
+                return response.json()
+            })
+
+            .then(product=>{
+                document.getElementById("ProductTitle").innerHTML = product.title;
+                document.getElementById("ProductImage").src = product.image;
+                document.getElementById("ProductPrice").innerHTML = "$" + product.price
+            })
+        }
+        function bodyload() {
+            LoadProducts(1)
+        }
+        var productId = 1
+        function rightClick() {
+            productId++;
+            LoadProducts(productId)
+        }
+        function leftClick() {
+            productId--;
+            LoadProducts(productId)
+        }
+        
+
+        function autoLoad() {
+            productId++
+            LoadProducts(productId)
+        }
+        var timer ;
+        function playClick() {
+            timer = setInterval(autoLoad,3000);
+            document.getElementById("lbl").innerHTML = "(Slide Show - Running)"
+
+        }
+        function pauseclick() {
+            timer = clearInterval(timer);
+            document.getElementById("lbl").innerHTML = "(Slide Show - Paused)"
+        }
+
+
+
+
+    </script>
+</head>
+<body onload="bodyload()" class="container-fluid  d-flex justify-content-center">
+    <div class="card p-2 m-2" style="width: 70%; height: 70%;">
+        <div id="lbl"></div>
+        <div class=" p-5 d-flex justify-content-around align-items-center h2 card-header" id="ProductTitle">
+            
+            
+
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-2 d-flex flex-column justify-content-center align-items-center">
+                    <button onclick="leftClick()" id="leftbtn" class=" btn-outline-danger bi-arrow-bar-left btn rounded rounded-5"></button>
+                </div>
+                <div class="col-8 position-relative" >
+                    <div class="  position-absolute  p-3 bg-danger text-white rounded rounded-5 " id="ProductPrice" style="right: -10px; top: 0px; font-weight: bold;" ></div>
+                    <img id="ProductImage" width="100%" height="350px">
+
+                </div>
+                <div class="col-2 d-flex flex-column justify-content-center align-items-center">
+                    <button onclick="rightClick()" id="rightbtn" class=" btn-outline-danger bi-arrow-bar-right btn rounded rounded-5"></button>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer d-flex justify-content-center align-items-center ">
+            <button onclick="playClick()" class= " btn btn-primary bi-play-fill me-2 "></button>
+            <button onclick="pauseclick()" class=" btn btn-warning bi bi-pause-fill btn-warning"></button>
+            
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>

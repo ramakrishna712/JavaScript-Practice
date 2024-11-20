@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .invalid-style{
+            border : 1px solid red;
+            box-shadow: 2px 2px 2px red;
+        }
+        .valid-style {
+            border : 1px solid green;
+            box-shadow: 2px 2px 2px green;
+        }
+    </style>
+    <script>
+        /*function ChangeCase() {
+            var name = document.getElementById("txt").value;
+            var tip = document.getElementById("tip");
+            if(name =="") {
+                tip.innerHTML = "Name Required".fontcolor('red');
+                document.getElementById("txt").className = "invalid-style";
+            }else{
+                tip.innerHTML = "";
+                document.getElementById("txt").className = "valid-style"
+            }
+        }
+
+
+        function Stockchange() {
+            let stockCheckbox = document.getElementById("optstock");
+            let lblStock = document.getElementById("lblStock");
+            if(stockCheckbox.checked){
+                lblStock.innerHTML = "Available"
+            }else{
+                lblStock.innerHTML = "Out of stock"
+            }
+        }*/
+           
+
+       /* function Coursechange() {
+            var Courses = document.getElementsByName("course");
+            var fee = 0;
+            var SelectdCourse ="" ;
+            for(course of Courses){
+                if(course.checked){
+                    SelectdCourse += course.id +" /";
+                    fee+= parseInt (course.value);
+                } 
+            }
+            document.querySelector("p").innerHTML = " Courses Selected = " +  SelectdCourse + "<br>  Fee Amount =" +fee;
+        }*/
+
+
+       /* function GetDeatils(msg) {
+            document.querySelector("p").innerHTML = msg ;
+        }*/
+
+
+        function FormSumit(e){
+            alert("form is submitted to server");
+            e.preventDefault();
+        }
+        function Citychange() {
+            formReg.submit();
+        }
+
+        
+    </script>
+</head>
+<body>
+    <!--<dl>
+        <dt>Your Name</dt>
+        <dd><input type="text" id="txt" onblur="ChangeCase()"></dd>
+        <dd id="tip"></dd>
+
+        <dt>Stock</dt>
+        <dd><input type="checkbox" id="optstock" onchange="Stockchange()"><label id="lblStock">Out of Stock</label></dd>
+    </dl>-->
+
+<fieldset>
+    <legend>Select Course</legend>
+    <ol>
+        <li><input onchange="Coursechange()" type="checkbox" id="React" value="5000" name="course">React-5000 rs</li>
+        <li><input onchange="Coursechange()" type="checkbox" id="javaScrit" value="3000" name = course>JavaScript-3000rs</li>
+        <li><input onchange="Coursechange()" type="checkbox" id="Java" value="11000" name="course">Java-11000rs</li>
+    </ol>
+    <button onclick="Submit()">Submit</button>
+    <p></p>
+</fieldset>
+
+
+<img ontouchstart="GetDeatils('50% OFF on smart watches')" src="../public/images/watch.jpg" width="100" height="100" alt="img">
+<img ontouchstart="GetDeatils('Kickstart Deals -20% OFF -Sale Live')" src="../public/images/sale1.jpg" alt="img" width="100" height="100">
+<img ontouchstart="GetDeatils('Play- Win Games on flipkart')" src="public/images/flipG.jpg" alt="img" width="100" height="100">
+<p></p>
+
+
+<!--<form onreset="alert('form will reset')" onsubmit="alert('form will submit')">
+    User Name :
+    <input type="text" name="UserName">
+    <button>submit</button>
+    <button type="reset">Cancel</button>
+
+
+</form>-->
+
+<form onsubmit="FormSumit(event)" name = "formReg">
+    User Name :
+    <input type="text" name="UserName"><br>
+    City :
+    <select onchange="Citychange()" name="City Select" id="cities">
+        <option>Hyderabad</option>
+        <option>Chennai</option>
+        <option>Kolkotta</option>
+    </select><br>
+    <button>Submit</button>
+    <button type="reset">Cancel</button>
+</form>
+
+</body>
+</html>

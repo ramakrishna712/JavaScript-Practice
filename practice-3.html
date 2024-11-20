@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--<select>
+        <option>Select Database</option>
+        <option>MySql</option>
+        <option>MongoDB</option>
+        <option>Oracle</option>
+    </select>
+    <button onclick="insertclick()">insert</button>
+    <button onclick="updateclick()">update</button>
+    <button onclick="Deleteclick()">delete</button>-->
+
+    <button id="btnInsert">Insert</button>
+    <button id="btnDelete">Delete</button>
+    <p></p>
+</body>
+
+</html>
+<script>
+    class Database 
+    {
+        constructor(dbName){
+            document.write(`connected to ${dbName} database<br>`)
+        }
+        insert(){
+            return "record inserted <br>"
+        }
+        update() {
+            return "Record Updated <br>"
+        }
+        Delete() {
+            return "Record deleted <br>"
+        }
+    }
+
+
+    function insertclick() {
+        let obj = new Database(document.querySelector("select").value);
+        document.write(obj.insert());
+    }
+    function updateclick() {
+        let obj = new Database(document.querySelector("select").value);
+        document.write(obj.update())
+    }
+    function Deleteclick() {
+        let obj = new Database(document.querySelector("select").value);
+        document.write(obj.Delete());
+    }
+
+
+
+    /*class Employee {}
+    var products = new Array();
+    var emp = new Employee();
+
+    document.write(`
+    emp is derived from Array ? ${emp instanceof Array}<br>
+    emp is derived from Employee ? ${emp instanceof Employee}`
+    );*/
+
+
+
+    /*let obj = {
+        Rama : "student",
+        age : 23,
+        male : true,
+    };
+
+    delete obj.Rama
+    console.log(obj);
+
+    for(var i=0 ;i<11; i++){
+        document.write(i+"<br>");
+    }
+    for(let i =1 ; i<21 ; i++){
+        document.write(`<strong> Table of ${i} </strong><br>`);
+        for(let j=1;j<11;j++){
+            document.write( i +"x" + j +"=" + i*j+"<br>");
+        }
+    }
+
+    let rows = 5; // Number of rows for the pyramid
+
+for (let i = 1; i <= rows; i++) {
+    // Print leading spaces
+    for (let j = 1; j <= rows - i; j++) {
+        document.write("&nbsp;&nbsp;"); // Each "&nbsp;" adds a space
+    }
+    
+    // Print stars
+    for (let k = 0; k < 2 * i - 1; k++) {
+        document.write("*");
+    }
+
+    document.write("<br>"); // Move to the next line after each row
+}
+
+    var categories = ["All","Electronics","FootWear","Fashion"];
+    for(let i =0; i<categories.length;i++){
+        document.write(categories[i]+"<br>")
+    }
+
+
+var objects = [{name:"Ram",age :30},{student:true,village :"Beeramguda"}];
+for (let i=0;i<objects.length;i++){
+    document.write(objects[i]+"<br>")
+}*/
+
+
+
+/*var names = [];
+for(let i=0; i<4 ; i++){
+    names[i] = prompt(`enter the name ${i+1}`)
+    document.write(`Name ${i+1} = ${names[i]}<br>`)
+}*/
+
+    /*let maxAttemps = 3 ;
+    let correctPin = 4545;
+    let succes = false ;
+
+    for(let attempts=0;attempts < maxAttemps; attempts++ ){
+        let enteredPin = prompt("Enter the Pin ");
+        if(parseInt(enteredPin) == correctPin) {
+            alert("Success");
+            succes = true;
+            break;
+        }else{
+            alert("Incorrect Pin Try Again")
+        }
+    }
+
+        if(!succes){
+            alert("blocked")
+        }*/
+
+    /*let i =1
+    for(;i<101; i++){
+        document.write(i + ",");
+    }
+    let a = 200;
+    for(; a>20; a=a-2){
+        document.write(a +" ")
+        
+    }*/
+
+    /*for(var i=1;i<=10;i++){
+        if(i===6){
+            continue;
+        }
+        document.write(i +"<br>");
+    }*/
+
+
+
+    /*for(let i =100; i>10; i=i-5){
+        if(i===50){
+            break;
+        }
+        document.write(i +"<br>")
+    }*/
+
+
+   /*for(var i =1; i<=5;i++){
+    for(var j=1;j<3;j++){
+        document.write(i+"<br>")
+        document.write(j+"<br>")
+    }
+   }*/
+    
+/*var values = [[10,20,30],[46,52,36]];
+
+for(var i=0;i<values.length;i++){
+    for(var j=0; j<values[i].length;j++){
+        document.write(`${values[i][j]} &nbsp; &nbsp;`)
+    }
+    document.write("<br><br>")
+}
+*/
+
+/*var n = prompt("Enter the number");
+for(var i =1; i<=n; i++){
+    for(var j=1; j<=i; j++){
+        document.write(`* &nbsp;&nbsp;`)
+    }
+    document.write("<br>");
+}*/
+
+
+/*var m = prompt("enter the number");
+for(var i =1; i<=m; i++){
+    for(var j=1; j<=m-i;j++){
+        document.write("&nbsp;&nbsp;&nbsp;")
+    }
+    for(let k=1; k<=2*i-1;k++){
+        document.write("*&nbsp;");
+    }
+    document.write("<br>")
+}*/
+
+
+
+
+/*let str = "iam rama krishna kunchala"
+
+for(var i=0; i<str.length; i++){
+    if(str[i] ===" "){
+        continue
+        
+    }
+    document.write(str[i])
+}*/
+
+/*let str1 = "iam ramakrihna from Beeramguda";
+
+ let char = prompt("Enter the char");
+ var count = 0;
+ for(var i =0; i < str1.length ; i++){
+    if(str1[i] == char){
+    count++;
+    } 
+ }
+ document.write(`${char} occured ${count} times`);*/
+
+
+/*var word = prompt("enter a palindrome word ");
+var ispalindrome = true;
+for(let i =0 ; i<word.length;i++){
+    if(word[i] !== word[word.length -1 -i]){
+        ispalindrome = false
+    }
+}
+if(ispalindrome){
+    document.write(`${word} is a Palindrome`);
+}else{
+    document.write(`${word} is not a palindrome`);
+}*/
+
+
+
+/*var word = prompt("enter the word");
+var reversedWord = word.split('').reverse().join('');
+if(word === reversedWord){
+    document.write(`${word} is a palindrome word`)
+}else{
+    document.write(`${word} is not a palindrome word`)
+}*/
+
+
+
+ /*var i = 1 ;
+ do
+  {
+    document.write(i +"<br>");
+    i++;
+  }while(i<100);*/
+
+
+
+ /*let i =0;
+ while(i<100){
+    i++
+    document.write(i+"<br>")
+ }*/
+
+
+ // Exception Handling //
+ /* try : monitoring block ,
+    catch : handler block ,
+    throw : throws exception explicitly,
+    finally : executes always 
+    */
+
+    
+
+    /*try
+    {
+        var a = parseInt(prompt("Enter Number-1"));
+        var b = parseInt(prompt("Enter Number-2"));
+        if(b==0){
+            throw "Divide By Zero Error: Can't Divide By Zero";
+        }
+        if(b>a){
+            throw "Error: Can't divide with a larger number <br>";
+        }
+        var c = a / b;
+        document.write(`Division=${c}`);
+    }
+    catch(error)
+    {
+        document.write(error + "<br>");
+    }
+    finally {
+        document.write("Program End");
+    }*/
+
+
+    /*try {
+        var age = parseInt(prompt("Enter the age"))
+        if(age<18){
+            throw "Error :you dont have enough age to particiapte in program"
+        }
+        if(age>28){
+            throw "Error : you are exceeded age limit to participate in program"
+        }
+        document.write("you are eligible to participate in this program"+"<br>")
+    }
+    catch(error) {
+        document.write( error+"<br>")
+    }
+    finally{
+        document.write("program completed")
+    }*/
+
+
+
+    /*function PrintNumbers(howmany) {
+        for(var i=1;i<howmany;i++){
+            document.write(i +"<br>")
+        }
+
+    }
+    PrintNumbers(100);*/
+
+
+
+
+
+   /* function Print(cities){
+        cities.map(city=>{
+            document.write(city+"<br>")
+        })
+    }
+    Print(["hyderabad","Chennai","kolkata","gujarat"])*/
+
+
+    /*function Print(Product) {
+        for(var property in Product){
+            document.write(`${property}:${Product[property]}<br>`)
+        }
+    }
+    Print({Name:"TV",Price:500052,Stock:true})*/
+
+
+   /* function Print(success) {
+        success()
+    }
+    Print(document.write("Login success"))*/
+
+
+    /*function print (Mfd) {
+        document.write(`Manufactured Date is :${Mfd.toDateString()}`)
+    }
+    var date = new Date("2023-04-13");
+    print(date);*/
+
+
+
+/*function print (mfd) {
+    if(mfd)
+{
+    document.write(`Manufactured:${mfd.toDateString()}`)
+}else{
+    document.write("Date required")
+}
+}
+var date = new Date("2023-04-29")
+print(date);*/
+
+/*function Details(id,name,price,stock) {
+    document.write(`Id:${id}<br> Name :${name}<br> Pirce :${price}<br> Stock : ${stock}`)
+}
+    Details(1,"Samsung",50000.0,true);*/
+
+
+
+  
+  /*function Details(...args) {
+    var [id,name,price,stock] = args ;
+    document.write(`
+    Id = ${id}<br>
+    Name = ${name}<br>
+    Price =${price}<br>
+    Stock = ${stock}`);
+  }
+  Details(101,"Nike",2500,true)*/
+
+
+  /*function Details(title,...args) {
+    var[id,name,price,stock]=args;
+    document.write(`
+
+    <h2>${title}</h2>
+    Id = ${id}<br>
+    Name =${name}<br>
+    Price = ${(price)?price :"N/A"}<br>
+    Stock = ${stock}<br>
+    `)
+  }
+  Details("Product Details",201,"Redmi",4502.00,true)
+
+
+  var one = ["A","B","C"];
+  var two = ["D"]
+  var result = [...one,two];
+  document.write(result);*/
+
+
+
+  /*function sum(...numbers){
+    return numbers.reduce((total,num)=>total+=num,0)
+  }
+  document.write(sum(1,20,23,))
+*/
+
+
+
+/*function noReturnvalue(){
+    console.log("this function does not return anything");
+}
+let result = noReturnvalue();
+console.log(result)
+
+
+function Print(){
+        document.write("Statement-1<br>");
+        document.write("Statement-2<br>");
+        document.write("Statement-3<br>");
+        return;
+        document.write("Statement-4<br>");
+        document.write("Statement-5<br>");
+     }
+     Print();
+
+
+     function getCat(){
+        return ["All","Jewelery","Electronics","Footwear"]
+     }
+        getCat().map(cat=>{
+            document.write(cat+"<br>")
+        })*/
+     
+
+     /*function Print() {
+        return function Print2 (){
+            document.write("function")
+        }
+     }
+     Print()()*/
+
+
+
+    /* function print(password) {
+        if(password === 4561){
+            return "login success"
+        }
+        else {
+            return "Invalid Password"
+        }
+     }
+     document.write(print(parseInt(prompt("Enter Password"))))*/
+
+
+    /* function calculation(operator,a,b) {
+        if(operator === "+"){
+            return a+b;
+        }if(operator === "-"){
+            return a-b;
+        }else {
+            return "Please choose + or - only"
+        }
+
+     }
+     document.write(calculation(prompt("enter + or -"),parseInt(prompt("Enter a vlaue",0)),parseInt(prompt("Enter the value b",0))));*/
+
+/*function createCounter () {
+    let count = 0;
+    return function() {
+        count++;
+        return count;
+    } 
+}
+var counter = createCounter();
+document.write(counter());
+document.write(counter());
+document.write(counter());
+document.write(counter());*/
+
+
+/*function outerfunction () {
+    var outerVariable = "iam outside"
+
+    function innerfunction() {
+        document.write(outerVariable)
+    }
+    return innerfunction
+}
+const myclosure = outerfunction();
+myclosure();*/
+
+
+
+/*function Outer() {
+    var a = 20;
+    function Inner(b) {
+        return a+b;
+    }
+document.write("addtion = "+ Inner(200))
+
+}
+Outer()*/;
+
+
+/*function multiplier(factor) {
+    return function (number){
+        return number*factor
+    }
+}
+const double = multiplier(2);
+const triple = multiplier(3);
+document.write(double(2)+"<br>");
+document.write(triple(3))*/
+
+
+
+/*function factorial(n) {
+    if(n==0 || n==1) {
+        return 1;
+    }
+    return n*factorial(n-1)
+
+}
+document.write(factorial(5))*/
+
+
+/*function sum(array) {
+    if(array.length ===0){
+        return 0;
+    }
+    return array[0] + sum(array.slice(1));
+}
+document.write(sum([1,20,30,40,50]))*/
+
+
+
+
+/*function greet(name) {
+    document.write("Hello " + name);
+}
+function user(callback) {
+    var name = prompt("enter the name");
+    callback(name);
+}
+user(greet);*/
+
+
+//CALLBACK FUNCTION //
+
+/*function login(id,name,password,succes,fail){
+    if(password==="ram"){
+        succes("login success")
+    }
+    else {
+        fail("login Failed try Again")
+    }
+
+}
+login(parseInt(prompt("Enter the id")),prompt("Enter the name"),prompt("enter the password"),
+function(response){
+    document.write(response)
+},
+function(response){
+    document.write(response)
+}
+);*/
+
+
+
+
+/*var singin = new Promise((resolve, reject) => {
+    var userid = prompt("Enter the userid") ;
+    var password = prompt("Enter the password");
+    if(userid === "ram" && password === "Ram@123"){
+        resolve("signin is succes")
+    }else{
+        reject("invalid signin details")
+    }
+})
+
+singin
+.then((response)=>{
+    document.write(response)
+})
+.catch((reject)=>{
+    document.write(reject);
+})
+.finally(()=>{
+    document.write("<p>Program End</p>")
+})
+*/
+
+
+//FUNCTION GENERATOR//
+
+/*function* idGenerator() {
+    let id = 101;
+    while(true){
+    yield id;
+    id++;
+
+    }
+}
+const generatedid = idGenerator();
+
+document.write(generatedid.next().value+"<br>");
+document.write(generatedid.next().value+"<br>");
+document.write(generatedid.next().value+"<br>");
+
+let result = generatedid.next();
+document.write(result.done);
+
+
+function* collection() {
+    yield "Hello !";
+    yield ["delhi","hyderabad"];
+    yield {Rate:3.5,count :4500 } ;
+
+}
+var list = collection();
+
+document.write(list.next().value);
+document.write(list.next().value);
+document.write(JSON.stringify(list.next().value));*/
+
+
+
+
+// ARROW FUNCTION //
+
+
+/*var hello = ()=> "Hello mama";
+ document.write(hello());*/
+
+/*var add = (a,b) =>
+a+b;
+document.write(add(10,50))*/
+
+
+/*var welcome = name => ` Hello! ${name}`;
+document.write(welcome("jhon"))*/
+
+
+
+/*fetch("http://fakestoreapi.com/products/categories")
+.then((response)=>
+    response.json())
+.then(categories=>{
+    categories.map(category =>{
+        document.write(category+"<br>")
+    })
+})*/
+
+
+
+/*function fibbinocci(n) {
+    if(n==0 || n==1){
+        return n;
+    }
+    return fibbinocci(n-1) + fibbinocci(n-2);
+}
+document.write(fibbinocci(6))*/
+
+
+
+
+/*function fibonacciIterative(n) {
+    let fib = [0, 1];
+    for (let i = 2; i <= n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
+    return fib[n];
+}
+
+
+document.write(fibonacciIterative(6)); */
+
+
+/*class Product {
+    name = "Samsung Tv";
+    price = "45000.00";
+    stock = true;
+    cities = ["Hyderabad","chennai","Kolkata"];
+    ratings = {rating :4.5,count:1789}
+}
+let mobile = new Product();
+mobile.name = prompt("Enter the new product name ")
+document.write(`
+name:${mobile.name}<br>
+price:${mobile.price}<br>
+stock:${mobile.stock}<br>
+citys :${mobile.cities}<br>
+ratings :${mobile.ratings.rating}[${mobile.ratings.count}]
+
+
+`)
+document.write("<br>"+Product)*/
+
+
+/*var userName = prompt("Enter the name ");
+var role = prompt("enter the role :Manager | admin | customer ");
+class Product {
+    _ProductName ;
+    get ProductName () {
+        return this._ProductName
+    };
+    set ProductName (newname) {
+        if(role === "manager"){
+            this._ProductName = newname ;
+        }else{
+            document.write(`Hello! ${userName} your role is ${role} not authorzied to set Product Name ` )
+        }
+    }
+}
+let tv = new Product() 
+    tv.ProductName = prompt("enter the Product name");
+    if(tv.ProductName) {
+        document.write(`Product Name : ${tv.ProductName}`)
+    };*/
+
+
+
+ /*class Product 
+ {
+    Name = "Sony Bravia 4k";
+    Rating = {
+        December : {
+            VendorRating : {Rate:4.5},
+            CustomerRating : {Rate :4.9}
+        }
+    }
+    get CustomerRating() {
+    return this.Rating.December.CustomerRating.Rate;
+ }
+
+ set CustomerRating(newrating) {
+    return this.Rating.December.CustomerRating.Rate = newrating;
+ }
+ }
+
+ let tv = new Product() 
+let oldRating = tv.CustomerRating;
+document.write(`Old customer Rating : ${oldRating} <br>`)
+
+ tv.CustomerRating = prompt("Enter the new rating for December");
+ document.write(`Customer new rating :${tv.CustomerRating}`)*/
+
+ 
+
+/*class Person {
+    constructor(firstName , lastName) {
+        this._firstname = firstName ;
+        this._lastname = lastName ;
+    }
+
+    get fullname() {
+        return `${this._firstname}${this._lastname}`;
+    }
+    set fullname(name) {
+        const[firstName , lastName] = name.split(' ');
+        this._firstname = firstName ;
+        this._lastname = lastName ;
+    }
+}
+
+let person = new Person("RamaKrishna","Kunchala");
+document.write(person.fullname+"<br>");
+
+document.write(person._firstname+"<br>");
+document.write(person._lastname);*/
+
+
+
+/*class Product 
+{
+    name = "SONY BRAVIA 4K";
+    price = 10000 ;
+    quantity = 0 ;
+
+    total() {
+        return this.quantity*this.price ;
+    }
+    print(){
+        document.write(`Name = ${this.name}<br> Price = ${this.price}<br> Quantity= ${this.quantity}<br> Total = ${this.total()}<br>`)
+    }
+}
+
+let tv = new Product()
+
+tv.quantity = prompt("Enter the no of tvs ");
+tv.print();
+
+let mobile = new Product()
+mobile.name = "redmi note 9 pro ";
+mobile.price = 13000;
+
+mobile.quantity = prompt("Enter the no.of mobiles");
+mobile.print();
+
+
+let laptop = new Product()
+
+laptop.name = "hp Pavillion Gaming Laptop";
+laptop.price = 65000.00;
+laptop.quantity = prompt("Enter the no.of loptops")
+laptop.print();*/
+
+
+
+
+</script>
+<script type="module">
+    import { Oracleclient } from './greet.js';
+    
+    let ora  = new Oracleclient()
+
+    document.getElementById("btnInsert").addEventListener("click",function(){
+        document.querySelector("p").innerHTML = ora.Insert();
+
+    })
+
+    document.getElementById("btnDelete").addEventListener("click",function() {
+        document.querySelector("p").innerHTML = ora.Delete();
+    })
+
+
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        let position = 0;
+        function RightClick() {
+            position++;
+            document.querySelector("img").style.marginLeft = position + "px";
+        }
+        var angle = 0;
+        
+        function RotateClick() {
+            angle++;
+            document.querySelector("img").style.transform = `rotate(${angle}deg)`;
+        }
+        function LeftClick() {
+            position--;
+            document.querySelector("img").style.marginLeft = position + "px";
+        }
+        function ResetClick(){
+            position = 0;
+            angle = 0;
+            document.querySelector("img").style.marginLeft = position + "px" ;
+            document.querySelector("imag").style.transform = `rotate(${angle}deg)`
+        }
+    </script>
+</head>
+<body>
+    <button class="bi bi-arrow-right btn btn-primary ms-5"   onclick="RightClick()"></button>
+    <button class="bi bi-arrow-clockwise btn btn-primary m-4" onclick="RotateClick()"></button>
+    <button class="bi bi-arrow-left btn btn-primary m-2" onclick="LeftClick()"></button>
+    <button class="btn btn-warning" onclick="ResetClick()">Reset</button>
+    <br><br>
+    <div>
+        <img src="../public/images/img1.jpg" alt="img">
+    </div>
+
+</body>
+</html>

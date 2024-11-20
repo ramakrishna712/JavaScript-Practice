@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap.icons/font/bootstrap.icons.css">
+    <script>
+        function BodyLoad() {
+            fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY")
+            .then(response=>{
+                return response.json();
+            })
+            .then(item=>{
+                item.photos.map(photo=>{
+                    var tr = document.createElement("tr");
+                    var tdid = document.createElement("td");
+                    var tdimage = document.createElement("td");
+                    var tdRover = document.createElement("td");
+                    var tdCamera = document.createElement("td");
+
+
+                    tdid.innerHTML = photo.id;
+                    tdimage.innerHTML = `<a href = ${photo.img_src}><img src = ${photo.img_src} width ="200" height="200"></a>`;
+                    tdRover.innerHTML = photo.rover.name;
+                    tdCamera.innerHTML = photo.camera.full_name;
+                    tr.appendChild(tdid);
+                    tr.appendChild(tdimage);
+                    tr.appendChild(tdRover);
+                    tr.appendChild(tdCamera);
+
+                    document.querySelector("tbody").appendChild(tr);
+                })
+            })
+        }
+    </script>
+</head>
+<body class="container-fluid" onload="BodyLoad()">
+    <h2>Mars Rover Photos</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Photo id</th>
+                <th>Preview</th>
+                <th>Rover</th>
+                <th>Camera</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    
+</body>
+</html>

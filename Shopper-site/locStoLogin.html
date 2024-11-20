@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function LoginClick() {
+            var userid = document.getElementById("txtid").value;
+            var password = document.getElementById("txtpsw").value;
+
+            if(password === "admin"){
+                localStorage.setItem("uid",userid);
+                location.href="welcome.html"
+            }else {
+                alert("Invalid Password")
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>User Login</h2>
+    <dl>
+        <dt>User Id</dt>
+        <dd><input type="text" id="txtid"></dd>
+        <dt>Password</dt>
+        <dd><input type="text" id="txtpsw"></dd>
+    </dl>
+    <button onclick="LoginClick()">Login</button>
+</body>
+</html>

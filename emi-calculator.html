@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emi Calculator</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function AmountChange(){
+            let amountinput = document.getElementById("txtAmount")
+            let amountSlider = document.getElementById("amountSlider")
+            amountinput.value = amountSlider.value;
+            amountSlider.value = amountinput.value;
+        }
+        function amountInput(){
+            let amountinput = document.getElementById("txtAmount");
+            let amountSlider = document.getElementById("amountSlider");
+            amountSlider.value = amountinput.value;
+
+
+        }
+        function YearChange(){
+            document.getElementById("txtYear").value = document.getElementById("yearSlider").value;
+        }
+        function RateChange(){
+            document.getElementById("txtInterest").value = document.getElementById("rateSlider").value;
+        }
+        function Calculate(){
+            let P = parseInt(document.getElementById("txtAmount").value);
+            let N = parseInt(document.getElementById("txtYear").value)*12;
+            let R = parseFloat(document.getElementById("txtInterest").value)/12/100;
+            let EMI = P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1);
+            document.getElementById("result").innerHTML = "Monthly Installment :" + Math.round(EMI).toLocaleString('en-in',{style:'currency',currency:'INR'});
+        }
+    </script>
+</head>
+<body class="container-fluid bg-secondary text-white">
+    <h1 class="text-center bg-primary" >Personal Loan EMI Calculator</h1>
+    <div class="bg-light text-dark p-4 m-4">
+        <div class="row ">
+            <div class="col">&#8377; Amount<input type="text" id="txtAmount" oninput="amountInput()"> </div>
+            <div class="col">Years<input type="text" id="txtYear"></div>
+            <div class="col">Interest<input type="text" id="txtInterest"></div>
+        </div>
+    </div>
+    <div>
+        <div class="row mt-4">
+            <div class="col"> min &#8377;10,00000<input type="range" min="1000000" value="1000000" max="3000000" value="3000000" step="1000" id="amountSlider" onchange="AmountChange()"> max &#8377;30,00000</div>
+            <div class="col">for 1 year<input type="range" min="1"  max="5" value="1" id="yearSlider" onchange="YearChange()"> to 5 years</div>
+            <div class="col">10.50%<input type="range" min="10.50" max="18.50" value="10.50" step="1" id="rateSlider" onchange="RateChange()">18.50%</div>
+            <div class="col"><button class="btn btn-warning  justify-content-center" onclick="Calculate()">Calculate</button></div>
+        </div>
+        
+    </div>
+    <div calss="mt-5 pt-5 align content-center">
+        <h1 class="bg-danger mt-5 " id="result"></h1>
+    </div>
+    
+</body>
+</html>

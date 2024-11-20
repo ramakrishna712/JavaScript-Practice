@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       /* class HDFC_version1 
+        {
+            Personal = "Personal Banking Services"
+            NRI = "NRI Services<br>"
+            Print(){
+                document.write(`${this.Personal} & ${this.NRI}<br>`)
+            }
+        }
+
+        class HDFC_version2
+        {
+            CreditCard = "Credit Card - Login<br>";
+            Print(){
+                let obj = new HDFC_version1();
+                obj.Print();
+                document.write(`${this.CreditCard}<br>`);
+                
+            }
+        }
+
+        class HDFC_versin3 
+        {
+            Loans = "Personal ,Bike , Car Loans<br>"
+            Print() {
+                let obj = new HDFC_version2();
+                obj.Print();
+                document.write(`${this.Loans}<br>`);
+            }
+        }
+        function Installclick() {
+            let ver = document.querySelector("select").value;
+
+            switch(ver)
+            {
+                case "ver1":
+                document.write(`<h2> HDFC 2022 - Version-1 Installed </h2><br>`);
+                let obj1 = new HDFC_version1();
+                obj1.Print();
+                break;
+
+                case "ver2":
+                document.write(`<h2> HDFC 2023 - Version-2 Installed</h2><br>`);
+                let obj2 = new HDFC_version2();
+                obj2.Print();
+                break;
+
+                case "ver3":
+                document.write(`<h2> HDFC 2024 -Version-2 Installed </h2><br>`);
+                let obj3 = new HDFC_versin3();
+                obj3.Print();
+                break;
+
+                default:
+                document.write("Please Select a Version")
+
+            }
+        }*/
+
+
+        //Inheritence
+
+
+
+        /*class HDFC_version1 
+        {
+            personal = "Personal Services";
+            NRI = "NRI Servies";
+            Print(){
+                document.write(`${this.personal} & ${this.NRI}<br>`)
+            }
+        }
+
+        class HDFC_version2 extends HDFC_version1
+        {
+            CreditCards = "CreditCard Servies";
+            Print() {
+                super.Print()
+                document.write(`${this.CreditCards}<br>`)
+            }
+        }
+        class HDFC_versin3 extends HDFC_version2
+        {
+            Loans = "Car Loans, Bike Loans, Home Loans";
+            Print() {
+                super.Print();
+                document.write(`${this.Loans}`)
+            }
+        }
+
+
+        function Installclick(){
+
+        let ver = document.querySelector("select").value;
+
+        switch(ver)
+        {
+            case "ver1":
+            document.write(`<h2> "HDFC 2022 - Version-1" </h2><br>`);
+            obj1 = new HDFC_version1();
+            obj1.Print();
+            break;
+
+            case "ver2":
+            document.write(`<h2> "HDF 2023 - Version-2" </h2><br>`)
+            obj2 = new HDFC_version2();
+            obj2.Print();
+            break;
+
+            case "ver3":
+            document.write(`<h2>" HDFC 2024 - Version-3" </h2><br>`);
+            obj3 = new HDFC_versin3();
+            obj3.Print();
+            break;
+
+            default :
+            document.write("Please Select a Version ");
+            break;
+
+
+        }
+    }*/
+
+    //Multi Level Inheritence //
+
+  /*  class Superclass 
+    {
+        constructor(){
+            document.write("Super Class Constructor<br>");
+        }
+    }
+
+    class Derivedclass extends Superclass 
+    {
+        constructor() {
+            super();
+            document.write("Derived class Constructor <br>");
+        }
+    }
+    let objs = new Derivedclass();
+
+    document.write(objs)*/
+
+    
+
+
+
+
+
+        /*class Book 
+        {
+            constructor(title,author){
+                this.title = title;
+                this.author = author;
+            }
+            getDetails(){
+                return `"${this.title}" b "${this.author}"`
+            }
+        }
+
+        class Library 
+        {
+            constructor(name) {
+                this.name = name ;
+                this.books = [];
+            }
+
+            addBook(book){
+                this.books.push(book);
+            } 
+
+
+            PrintLibrary(){
+                document.write(`Library Name :${this.name}<br>`);
+                document.write("Books in the Library"+"<br>");
+                this.books.map(book=>{
+                    document.write(book.getDetails()+"<br>");
+                })
+            }
+        }
+       
+
+        let book1 = new Book("How to Kill","Ramakrishna");
+        let book2 = new Book("How to Train Your Dragon-3","Peter James");
+
+        let myLibraray = new Library("Ram Library")
+
+        myLibraray.addBook(book1);
+        myLibraray.addBook(book2);
+
+        myLibraray.PrintLibrary();*/
+
+
+
+        //Polymorphism//
+
+//Example 1 //
+        class Vehicle 
+        {
+            move() {
+                document.write("Vehical is Moving<br>")
+            }
+        }
+
+        class Car extends Vehicle {
+            move(){
+                document.write("Car is Moving<br>")
+            }
+        }
+
+        class Bike extends Vehicle {
+            move() {
+                document.write("Bike is Speeding  on the Track<br>")
+            }
+        }
+         class Truck extends Vehicle 
+          {
+            move() {
+                document.write("truck is hauling Cargo<br>");
+            }
+          }
+
+          let vehicles = [new Car(), new Bike(), new Truck()];
+
+          vehicles.forEach(vehicle => {
+            vehicle.move()
+          })
+
+//Example22//
+
+
+class Employee 
+{
+    FirstName;
+    LastName ;
+    Designation;
+    Print() {
+        document.write(`${this.FirstName}${this.LastName}${this.Designation}<br>`)
+    }
+}
+class Developer extends Employee
+{
+    FirstName = "Ram";
+    LastName = "Kunchala";
+    Designation = "Web Developer";
+    Role = "Web Developer Role : Design Interfaces , Optimize websiteis ,Integratrion Websites";
+    Print(){
+        document.write(`${this.Role}`);
+    }
+}
+class Admin extends Employee 
+ {
+    FirstName = "Saham";
+    LastName = "lala";
+    Designation = "Admin";
+    Role = "Admin Roloe : Authorizations ";
+    Print() {
+        document.write(`${this.Role}`);
+    }
+ }
+ class Manager extends Employee
+ {
+    FirstName = "Krishna";
+    LastName = "Kunchala";
+    Designation = "Manager";
+    Role = "Manager Role :Approvals";
+    Print(){
+        document.write(`${this.Role}`);
+    }
+ }
+let employees = [new Developer(), new Admin(), new Manager()];
+var designation = prompt("Enter the Designation");
+for(var employee of employees){
+    if(employee.Designation===designation){
+        employee.Print();
+    }
+}
+
+
+
+
+    </script>
+</head>
+<body>
+
+    <fieldset>
+        <legend>
+            <h2>Install HDFC Bank App</h2>
+        </legend>
+        <select>
+            <option value="-1">Select</option>
+            <option value="ver1">HDFC 2022 [ Personal, NRI ] </option>
+            <option value="ver2">HDFC 2023 [ Credit Cards ] </option>
+            <option value="ver3">HDFC 2024 [ Loans ] </option>
+            
+        </select>
+        <button onclick="Installclick()">Install</button>
+    </fieldset>
+    
+</body>
+</html>

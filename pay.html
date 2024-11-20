@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forward Jump - Card Details</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function VerifyCardno() {
+            let cardno = document.getElementById("cardno").value;
+            if(cardno === "147852369123654"){
+                document.getElementById("cvv").disabled = false;
+            } else {
+                document.getElementById("cvv").disabled = true;
+                document.getElementById("expiry").disabled = true;
+                document.getElementById("btnVerify").disabled = true;
+            }
+        }
+
+        function VerifyCvv() {
+            let cvvno = document.getElementById("cvv").value;
+            if(cvvno === "456"){
+                document.getElementById("expiry").disabled = false;
+            } else {
+                document.getElementById("expiry").disabled = true;
+                document.getElementById("btnVerify").disabled = true;
+            }
+        }
+
+        function VerifyExpiry() {
+            let expiry = document.getElementById("expiry").value;
+            if(expiry === "2024"){
+                document.getElementById("btnVerify").disabled = false;
+            } else {
+                document.getElementById("btnVerify").disabled = true;
+            }
+        }
+
+        function navigateToPayment() {
+            window.location.href = "payment.html";
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div class="card mt-5 w-25">
+        <div class="card-header">
+            <legend>Card Details</legend>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="cardno" class="form-label">Card Number</label>
+                    <input type="text" id="cardno" class="form-control" onblur="VerifyCardno()">
+                </div>
+                <div class="mb-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input type="text" id="cvv" class="form-control" disabled onblur="VerifyCvv()" size="4">
+                </div>
+                <div class="mb-3">
+                    <label for="expiry" class="form-label">Expiry</label>
+                    <select id="expiry" class="form-select" onchange="VerifyExpiry()">
+                        <option value="" disabled selected>Select Expiry</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </div>
+                <button type="button" id="btnVerify" class="btn btn-primary" disabled onclick="navigateToPayment()">Verify Card</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

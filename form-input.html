@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form-Input</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript">
+        function RegisterClick(){
+            document.getElementById("detailsContainer").style.display ="block";
+            document.getElementById("btnNew").style.display="none";
+            document.getElementById("lblName").innerHTML = document.getElementById("txtName").value;
+            document.getElementById("lblPrice").innerHTML = document.getElementById("txtPrice").value;
+            document.getElementById("lblCity").innerHTML = document.getElementById("lstCities").value;
+            
+            let stockbox = document.getElementById("optStock");
+            stockStatus ="";
+            if(stockbox.checked) {
+                stockStatus="Available";
+            }else{
+              stockStatus ="Out Of Stock";
+            }
+            document.getElementById("lblStock").innerHTML= stockStatus;
+        }
+        function EditClick(){
+            document.getElementById("modalTitle").innerHTML ="Update Product";
+            document.getElementById("btnRegister").innerHTML = "Save Product";
+            document.getElementById("btnRegister").className = "btn btn-success w-100";
+        }
+
+    </script>
+</head>
+<body class="container-fluid">
+    <button id="btnNew" class="btn btn-primary w-25 mt-2" data-bs-toggle ="modal" data-bs-target="#registerContainer">New Product</button>
+    <div id="registerContainer" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Register Product</h3>
+                    <button class="btn btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <dl>
+                        <dt>Name</dt>
+                        <dd><input type="text" id="txtName" class="form-control"></dd>
+                        <dt>Price</dt>
+                        <dd><input type="number" id="txtPrice" class="form-control"></dd>
+                        <dt>Shipped To</dt>
+                        <dd>
+                            <select id="lstCities" class="form-select">
+                                <option>Select City</option>
+                                <option>Delhi</option>
+                                <option>Hyderabad</option>
+                                <option>Chennai</option>
+                            </select>
+                        </dd>
+                        <dt>Stock</dt>
+                        <dd class="form-switch"><input id="optStock" type="checkbox" class="form-check-input"> <label  class="form-check-label">Available</label></dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnRegister" data-bs-dismiss="modal" onclick="RegisterClick()" class="btn btn-primary w-100">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="detailsContainer" style="display: none;">
+        <h3>Product Details</h3>
+        <dl>
+        <dt>Product Name</dt>
+        <dd id="lblName"></dd>
+        <dt>Price</dt>
+        <dd id="lblPrice"></dd>
+        <dt>Stock</dt>
+        <dd id="lblStock"></dd>
+        <dt>Shipped To</dt>
+        <dd id="lblCity"></dd>
+        </dl>
+        <button onclick="EditClick()" class="bi bi-pen-fill btn btn-warning" data-bs-target="#registerContainer" data-bs-toggle="modal">Edit</button>
+        <button onclick="location.reload()" class="btn btn-primary" >New</button>
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

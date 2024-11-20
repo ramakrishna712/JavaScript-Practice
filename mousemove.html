@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*function GetPosition(e) {
+            if((e.clientX > 230 && e.clientX < 303) && (e.clientY>362 && e.clientY<429)) {
+                document.querySelector("h1").innerHTML = "30% OFF on Bags";
+
+            }else{
+                document.querySelector("h1").innerHTML = "";
+            }
+
+        }*/
+
+        function GetPosition(e){
+            var pic = document.querySelector("img");
+            pic.style.position = "fixed";
+            pic.style.top = e.clientY + "px";
+            pic.style.left = e.clientX + "px";
+
+        }
+    </script>
+</head>
+<body onmousemove="GetPosition(event)">
+    <div style="height: 1000px;">
+        move mouse pointer to test
+    </div>
+    <img src="../public/images/flag.gif" alt="gif" width="50" height="50">
+    <!--<img onmousemove="GetPosition(event)" src="public/images/Wb.jpg" alt="img" width="400" height="500">
+    <h1></h1>-->
+
+
+</body>
+</html>

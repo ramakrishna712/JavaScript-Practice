@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        a{
+            color:white;
+            font-size: 25px;
+            text-decoration: none;
+            
+        }
+        a:hover {
+            background-color: aliceblue;
+            padding: 15px;
+            color:black
+        }
+        .links{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <header class="p-3 d-flex justify-content-around bg-dark text-white">
+        <div class="links">
+            <span class="me-5"><a href="javascript:LoadPage('home.html')">Home</a></span>
+            <span class="me-5"><a href="javascript:LoadPage('mens.html')">Mens's Fashion</a></span>
+            <span class="me-5"><a href="javascript:LoadPage('women.html')">women's Fashion</a></span>
+            <span class="me-5"><a href="javascript:Loadpage('kids.html')">Kid's Fashion</a></span>
+        </div>
+        <span class="bi bi-person"></span>
+        <span class="bi bi-heart"></span>
+        <span class="bi bi-cart"></span>
+         
+    </header>
+    <section>
+
+    </section>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/bootstrap.bundle.js"></script>
+    <script src="scripts/index.js"></script>
+    
+</body>
+</html>

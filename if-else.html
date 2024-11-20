@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function ContinueClick(){
+            var userid = document.getElementById("userid").value;
+            var econtainer = document.getElementById("emailcontainer");
+            var pswcontainer = document.getElementById("pswcontainer");
+            if(userid === "+918074673008"){
+                flag = `Login Success... - OTP Sent to Your Mobile ${userid}...`;
+                pswcontainer.style.display = "block";
+                econtainer.style.display = "none";
+            } else if(userid === "ram@gmail.com"){
+                flag = `Login Succes.. - OTP Sent to Your Email${userid}...`;
+                pswcontainer.style.display = "block";
+                econtainer.style.display = "none";
+            }else{
+                document.getElementById("idError").innerHTML = `${userid} doesn't exist`
+            }
+        }
+        function Loginclick() {
+            var psw = document.getElementById("password").value;
+            if(psw === "Ram123"){
+                document.write(`<h2 class="bg-success">${flag}</h2>`)
+            }else{
+                document.getElementById("pswError").innerHTML = "Invalid Password" ;
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div>
+        <h1>Signup</h1>
+        <div id="emailcontainer">
+            <label class="form-label fw-bold">Your Email or Phone</label>
+            <div>
+                <input type="text" id="userid">
+                <div class="text-danger" id="idError"></div>
+            </div>
+            <div class="mt-4">
+                <button onclick="ContinueClick()" class="btn btn-warning">Continue</button>
+            </div>
+        </div>
+        
+        <div class="mt-2" id="pswcontainer" style="display: none;">
+            <label class="form-label fw-bold">Your Password</label>
+            <div>
+                <input type="text" id="password">
+                <div class="text-danger" id="pswError"></div>
+            </div>
+            <div class="mt-4">
+                <button class="btn btn-warning" onclick="Loginclick()">Login</button>
+            </div>
+        </div>
+        
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    /*function Deletclick(){
+        result = confirm("Record will be deleted\nAre you sure?");
+        if(result == true){
+            document.querySelector("p").innerHTML ="<b><font color='red'>Record Deleted..</font></b>";
+        }else {
+            document.querySelector("p").innerHTML = "<b><font color='red'>You Canceled..</font></b>";
+        }
+    }
+    document.write("Hello")
+    document.write(20+20);*/
+
+
+    function DeleteClick(){
+        result = confirm("Are you sure\nRecord will be deleted?");
+        if(result == true){
+            document.querySelector("p").outerHTML ="<h1>Record Deleted</h1>"
+        }else{
+            document.querySelector("p").innerText ="You Canceled";
+        }
+    }
+</script>
+<body>
+    <button onclick="DeleteClick()">Delete</button>
+    <p></p>
+
+    
+</body>
+</html>

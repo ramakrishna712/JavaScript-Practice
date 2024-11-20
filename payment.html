@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forward Jump - Payment Details</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function processPayment() {
+            let amount = document.getElementById("amount").value;
+            if(amount) {
+                alert("Payment is successful");
+            } else {
+                alert("Please enter the amount");
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div class="card mt-5 w-25">
+        <div class="card-header">
+            <legend>Payment Details</legend>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount Payable</label>
+                    <input type="text" id="amount" class="form-control">
+                </div>
+                <button type="button" id="btnPay" class="btn btn-primary" onclick="processPayment()">Pay</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

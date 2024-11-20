@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeStore-API</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function LoadProducts(url = "http://fakestoreapi.com/products") {
+            fetch(url)
+            .then(response=>{
+                return response.json()
+            })
+            .then(products=>{
+                document.getElementById("cards").innerHTML = '';
+                products.map(product=>{
+                    var div = document.createElement("div");
+                    div.className = "card p-2 m-2";
+                    div.style.width ="200px";
+                    div.innerHTML = ` <img src=${product.image} class="card-img-top"height="140">
+                    <div class = "card-header" style="height:120px">${product.title}
+                        </div>
+                        <div class="card-body">
+                            <dl>
+                                <dt>Price</dt>
+                                    <dd>${product.price}</dd>
+                                    <dt>Rating</dt>
+                                    <dd>${product.rating.rate}<span class="bi bi-star-fill text-success"></span></dd>
+                                    </dl>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button onclick="AddClick(${product.id},'${product.title}')" class="btn btn-dark w-100 bi bi-cart4">Add to Cart</button>
+                                        </div>`;
+                                        document.getElementById("cards").appendChild(div);
+                })
+            })
+        }
+
+            function LoadCategories(){
+                fetch("http://fakestoreapi.com/products/categories")
+                .then(response=>{
+                    return response.json();
+                })
+                .then(categories=>{
+                    categories.map(category=>{
+                        let opt = document.createElement("option");
+                        opt.innerHTML = category.toUpperCase()
+                        opt.value = category;
+                        document.getElementById("selectCat").appendChild(opt);
+                    })
+                })
+            }
+            function GetCategory() {
+            var CatName = document.getElementById("selectCat").value;
+            if (CatName === "all") {
+                LoadProducts("http://fakestoreapi.com/products");
+            } else {
+                LoadProducts(`http://fakestoreapi.com/products/category/${CatName}`);
+            }
+        }
+        var cartitems =[];
+        function GetCartCount() {
+            document.getElementById("lblcount").innerHTML = cartitems.length;
+        }
+            
+        function AddClick(id) {
+            fetch(`http://fakestoreapi.com/products/${id}`)
+            .then(response=>{
+                return response.json();
+            })
+            .then(product=>{
+                cartitems.push(product);
+                alert(`${product.title}\n Added to Cart`);
+                GetCartCount()
+            })
+    
+        }
+        function ShowCart() {
+            document.querySelector("tbody").innerHTML = "";
+            let totalPrice = 0 ;
+            cartitems.map(item=>{
+                var tr = document.createElement("tr");
+                var tdTitle = document.createElement("td");
+                var tdPrice = document.createElement("td");
+                var tdimage = document.createElement("td");
+
+                tdTitle.innerHTML = item.title;
+                tdPrice.innerHTML = item.price;
+                tdimage.innerHTML = `<img src = ${item.image} width="50" height = "50">`;
+                tr.appendChild(tdTitle);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdimage);
+
+
+                document.querySelector("tbody").appendChild(tr);
+
+                totalPrice += item.price;
+            })
+            var trTotal = document.createElement("tr");
+            var tdTotalLabel = document.createElement("td");
+            tdTotalLabel.colSpan = 2;
+            tdTotalLabel.innerHTML = "<strong>TOTAL</strong>";
+            var tdTotalPrice =document.createElement("td");
+            tdTotalPrice.innerHTML =    `<strong>${totalPrice.toFixed(2)}</strong>`;
+            trTotal.appendChild(tdTotalLabel);
+            trTotal.appendChild(tdTotalPrice);
+            document.querySelector("tbody").appendChild(trTotal);
+
+        }
+        function BodyLoad(){
+            LoadProducts();
+            LoadCategories()
+        }
+
+    </script>
+</head>
+<body class="me-0 container-fluid "  onload="BodyLoad()">
+    <header class="mb-3 bg-dark text-white d-flex justify-content-between p-3"><div><h1 class="bi bi-shop">FakeStore</h1></div>
+        <nav class="fs-4"><span class="me-4">Home</span><span class="me-4">Woemens Fashion</span><span class="me-4">Electronics</span><span class="me-4">Mens Fashion</span></nav>
+        <div><button onclick="ShowCart()"data-bs-target="#cart" data-bs-toggle="modal" class="btn btn-light bi bi-cart4 position-relative"><span class="position-absolute badge bg-danger text-white rounded rounded-circle top-0" id="lblcount"></span></button>
+            <div class="modal fade" id="cart">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="text-primary">Your Cart</h2>
+                            <button class="btn btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Price</th>
+                                        <th>Preview</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="select">
+        <select onchange="GetCategory()" name="Categories" id="selectCat" class="form-select w-25">
+            <option value="all">ALL</option>
+        </select>
+    </div>
+    <div id="cards" style="display: flex; flex-wrap: wrap; margin-left: 100px;">
+        
+
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function sortClick(){
+            var btnSort = document.getElementById("btnSort");
+            var lblSort = document.getElementById("lblSort");
+            btnSort.className = (btnSort.className === "bi bi-sort-alpha-down") ? "bi bi-sort-alpha-up":"bi bi-sort-alpha-down";
+            lblSort.innerHTML = (btnSort.className==="bi bi-sort-alpha-down")?"Sort Ascending":"Sort Descending";
+        }
+
+        function StockChange() {
+            let optStock = document.getElementById("optStock");
+            let lblStock = document.getElementById("lblStock");
+            lblStock.innerHTML = (optStock.checked)? "Stock Available":"Out Of Stock";
+            var btnCart = document.getElementById("btnCart");
+            btnCart.disabled = (optStock.checked)? false:true;
+            var img = document.querySelector("img");
+            img.style.display = (optStock.checked)? "block":"none";
+        }
+        function addcart(){
+            alert("Added to Cart");
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <button class="bi bi-sort-alpha-down" id="btnSort" onclick="sortClick()"></button>
+    <span id="lblSort">Sort  Ascending </span>
+    <br>
+    <input type="checkbox" id="optStock" onchange="StockChange()"><label id="lblStock">Out Of Stock</label>
+    <br>
+    <img style="display: none;" src="public/images/mb.jpg" alt="mobile" width="200" height="300">
+    <br>
+    <button class="bi bi-cart4" id="btnCart" disabled onclick="addcart()">buy</button>
+</body>
+</html>

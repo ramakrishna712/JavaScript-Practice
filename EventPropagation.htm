@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 200px;
+            border: 1px solid black;
+            padding: 20px;
+            background-color: blue;
+
+        }
+    </style>
+    <script>
+       /* function ContanerClick(){
+            alert("Container Clicked");         
+        }
+        function Submitclick(e){
+            alert("Submit Clicked");
+            e.stopPropagation();
+        }*/
+
+        /*if(location.protocol =="http:"){
+            document.write("you are using our page from server")
+        }else{
+            document.write("your are using a file system - some Features may not work Properly")
+        }*/
+
+        function Okay(event) {
+            event.preventDefault();
+            var otp = document.getElementById("otp").value;
+            if(otp === "1716"){
+                location.href="../kfc-form.html";
+            }else{
+                location.href = "../error.html";
+            }
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+    <!--<div class="container" onclick="ContanerClick()">
+        <h1>Container</h1>
+        <button onclick="Submitclick(event)">Submit</button>
+    </div>-->
+
+
+    <form>
+        Enter otp:
+        <input type="text" id="otp">
+        <button type="button" onclick="Okay(event)">submit</button>
+    </form>
+
+</body>
+</html>

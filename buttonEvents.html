@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function OpenImage() {
+            window.open("../public/images/ani.jpg","Animals","width=1200 height=600 margin-top = 100px");
+        }document.oncontextmenu = function(){
+            alert("you Can't right click");
+            return false ;
+        }
+
+    </script>
+</head>
+<body>
+    <img ondblclick="OpenImage()" src="../public/images/ani.jpg" width="200" height="200" alt="img">
+    <p>Double Click to View Large</p>
+    <p>Right click is diabled</p>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*function SizeChange() {
+            document.getElementById("msg").style.fontSize = document.getElementById("fontsize").value + "px";
+        }
+        function setShadow(){
+            document.getElementById("msg").style.textShadow = `${document.getElementById("hP").value}px ${document.getElementById("vP").value}px ${document.getElementById("bp").value}px ${document.getElementById("pc").value}`;
+        }
+        function hShadow(){
+            setShadow();
+        }
+        function vShadow(){
+            setShadow()
+        }
+        function bShadow() {
+            setShadow()
+        }
+        function shadowcolor(){
+            setShadow()
+        }*/
+
+       /* function VerifyName(){
+            var nam = document.getElementById("name").value ;
+            var err = document.getElementById("error");
+            if(nam.charAt(0) == "A" || nam.charAt(0) == "a"){
+                err.innerHTML = "Name Verified Successfully".fontcolor('green').bold();
+            }else {
+                err.innerHTML = " Name Must Start with A char".fontcolor("red").bold();
+            }
+        }*/
+
+
+        function VerifyCard() {
+            var num = document.getElementById("txtCard").value;
+            var img = document.getElementById("imgCard") ;
+            if(num.startsWith("8991")){
+                img.src = "../public/images/visa.jpg"
+            } else {
+                img.src ="../public/images/visa.jpg"
+            }
+        }
+        function VerifySkype() {
+            var add =  document.getElementById("skypetxt").value;
+            var err = document.getElementById("error")
+            if(add.endsWith("outlook.com")){
+                err.innerHTML = "Verified Successfully".fontcolor("green").bold();            
+            }else{
+                err.innerHTML = "Invalid Skype Id".fontcolor("red").bold();
+            }
+        }
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body class="container-fluid">
+    <!--<fieldset>
+        <legend>Shadow Attributes</legend>
+        <dl>
+            <dt>Font Size</dt>
+            <dd><input type="range" min="1" max="100"  value="15" id="fontsize" onchange="SizeChange()"></dd>
+            <dt>Horizantal</dt>
+            <dd><input type="range" min="1" max="50" value="1" id="hP" onchange="hShadow()"></dd>
+            <dt>Vertical</dt>
+            <dd><input type="range" min="1" max="50" value="1" id="vP" onchange="vShadow()"></dd>
+            <dt>Blur</dt>
+            <dd><input type="range" min="1" max="50" value="1" id="bp" onchange="bShadow()"></dd>
+            <dt>Color</dt>
+            <dd><input type="color" min="1" max="50" value="1" id="pc" onchange="shadowcolor()"></dd>
+            
+        </dl>
+    </fieldset>
+    <p align="center" id="msg">Text Formatting</p> -->
+
+
+<!--<dl>
+    <dt>Name</dt>
+    <dd><input type="text" id="name" onblur="VerifyName()"></dd>
+    <dd id="error"></dd>
+</dl>-->
+
+
+<dl class=" w-25 bg-danger">
+    <h2>Payment</h2>
+    <dt>Your Card Number</dt>
+    <dd class="input-group">
+    <dd><input type="text"  class="form-control" id="txtCard" onblur="VerifyCard()"></dd>
+    <img class="input-group-text" id="imgCard" width="80">
+    </dd>
+    <dt>Your Skype</dt>
+    <dd>
+        <input type="text" id="skypetxt" onblur="VerifySkype()" class="form-control">
+    </dd>
+    <dd id="error"></dd>
+</dl>
+</body>
+</html>

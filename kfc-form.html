@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC-ONLINE</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript">
+        function OrderClick() {
+            document.getElementById("lblName").innerHTML = document.getElementById("textname").value;
+            document.getElementById("lblMobile").innerHTML = document.getElementById("textmobile").value;
+            var mealName = "";
+            var mealCost = 0;
+            var optBurger = document.getElementById("optBurger");
+            var optRoller = document.getElementById("optRoller");
+            var imgMeal = document.getElementById("imgMeal");
+            if (optBurger.checked) {
+                mealName = optBurger.value;
+                mealCost = 120;
+                imgMeal.src = "../public/images/omg1.PNG"
+            }
+            if (optRoller.checked) {
+                mealName = optRoller.value;
+                mealCost = 100;
+                imgMeal.src = "../public/images/omg2.PNG"
+            }
+            var addonName = "";
+            var addonCost = 0;
+            var optKrusher = document.getElementById("optKrusher");
+            var optWings = document.getElementById("optWings");
+
+            if (optKrusher.checked) {
+                addonName += optKrusher.value + "<br>";
+                addonCost = 40;
+                mealCost += addonCost;
+            }
+            if (optWings.checked) {
+                addonName += optWings.value;
+                addonCost = 60;
+                mealCost += addonCost;
+            }
+            document.getElementById("lblMeal").innerHTML = mealName;
+            document.getElementById("lblAddon").innerHTML = addonName;
+            document.getElementById("lblTotal").innerHTML = mealCost.toLocaleString("en-in", { style: "currency", currency: 'INR' });
+        }
+    </script>
+
+    <style>
+        h1 {
+            color: white;
+            font-family: Friz Quadrata;
+            font-weight: bolder;
+            font-style: italic;
+        }
+
+        /* Responsive adjustments */
+        .accordion-body img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            object-fit: cover;
+        }
+
+        /* Modal image */
+        #imgMeal {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Footer styling */
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Specific Styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .h3 {
+                font-size: 1.2rem;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="container-fluid">
+    <header class="bg-danger p-2 d-flex justify-content-between align-items-center">
+        <div><span class="bi-list fs-1 text-white"></span></div>
+        <h1 class="text-center">TFC</h1>
+        <div><span class="bi-bucket text-white fs-1"></span></div>
+    </header>
+
+    <main>
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="1000">
+                    <img src="public/images/carousel2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="1000">
+                    <img src="public/images/carousel1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="public/images/carousel3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </main>
+
+    <section>
+        <div class="accordion my-2" id="kfc">
+            <!-- Customer Details -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button data-bs-target="#customer" data-bs-toggle="collapse" class="btn btn-danger w-100">Customer Details</button>
+                </h2>
+                <div class="accordion-collapse collapse show" id="customer" data-bs-parent="#kfc">
+                    <div class="accordion-body bg-danger text-white p-2">
+                        <dl class="container-fluid">
+                            <dt>Customer Name</dt>
+                            <dd><input type="text" class="form-control" id="textname"></dd>
+                            <dt>Mobile</dt>
+                            <dd><input type="text" class="form-control" id="textmobile"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Your Meal -->
+            <div class="accordion-item my-3">
+                <h2 class="accordion-header">
+                    <button data-bs-target="#meal" data-bs-toggle="collapse" class="btn btn-danger w-100">Select Your Meal</button>
+                </h2>
+                <div class="accordion-collapse collapse" id="meal" data-bs-parent="#kfc">
+                    <div class="accordion-body">
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h3>OMG Burger</h3>
+                                <img src="../public/images/omg1.PNG" alt="OMG Burger">
+                                <div>
+                                    <input type="radio" class="form-check-input border-black" id="optBurger" value="OMG Burger" name="Meal">
+                                    <label class="form-check-label">&#8377;120/-</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h3>OMG Roller</h3>
+                                <img src="../public/images/omg2.PNG" alt="OMG Roller">
+                                <div>
+                                    <input type="radio" class="form-check-input border-black" id="optRoller" value="OMG Roller" name="Meal">
+                                    <label class="form-check-label">&#8377;100/-</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Addons -->
+            <div class="accordion-item my-3">
+                <h2 class="accordion-header">
+                    <button data-bs-target="#addon" data-bs-toggle="collapse" class="btn btn-danger w-100">Select Addons</button>
+                </h2>
+                <div class="accordion-collapse collapse" id="addon" data-bs-parent="#kfc">
+                    <div class="accordion-body">
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h3>Krusher Brownie</h3>
+                                <img src="../public/images/brown.png" alt="Krusher Brownie">
+                                <div>
+                                    <input type="checkbox" class="form-check-input border-black" id="optKrusher" value="Krusher Brownie">
+                                    <label class="form-check-label">&#8377;40/-</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h3>Hot Wings</h3>
+                                <img src="../public/images/wings1.PNG" alt="Hot Wings">
+                                <div>
+                                    <input type="checkbox" class="form-check-input border-black" id="optWings" value="Wings">
+                                    <label class="form-check-label">&#8377;60/-</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Place Order Button -->
+            <button onclick="OrderClick()" class="btn btn-danger w-100" data-bs-target="#summary" data-bs-toggle="modal">Place Order</button>
+
+            <!-- Modal for Order Summary -->
+            <div class="modal fade" id="summary">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger text-white">
+                            <h1 class="h3">Summary</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <dl>
+                                <dt>Customer Name</dt>
+                                <dd id="lblName"></dd>
+                                <dt>Mobile</dt>
+                                <dd id="lblMobile"></dd>
+                                <dt>Meal</dt>
+                                <dd id="lblMeal"></dd>
+                                <dt>Addons</dt>
+                                <dd id="lblAddon"></dd>
+                                <dt>Total</dt>
+                                <dd id="lblTotal"></dd>
+                                <img src="../public/images/omg1.PNG" alt="Order Image" id="imgMeal">
+                            </dl>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger w-100" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white p-1">
+        <p>FC &copy; 2023 | All rights reserved.</p>
+    </footer>
+</body>
+</html>

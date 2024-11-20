@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*for(var item of navigator.plugins){
+            document.write(item.name + "<br>");
+        }
+        if(navigator.plugins['Chrome PDF Viewer']=== undefined){
+            document.write("please install Plugins to view pdf")
+        }else {
+            document.write("Pdf Plugin Available");
+        }*/
+
+
+       /* navigator.geolocation.getCurrentPosition(
+            function(position){
+                const latitude = position.coords.latitude ; 
+                const longitude = position.coords.longitude ; 
+
+                document.write("Latitude :"+ latitude + "<br>");
+                document.write("Longitude :" + longitude );
+            },
+            function(error) {
+                document.write("Error:" + error.message)
+            }
+        );*/
+
+        /*if(navigator.cookieEnabled){
+            document.write("cookies is Enabled")
+        }else{
+            document.write("cookies is disabled")
+        }*/
+
+
+           //Loacation Object //
+
+
+          /* if(location.protocol ===  "http:"){
+            document.write("you  are accessing page from the server")
+           }else{
+            document.write("you are accessing page from the Fiule system -some features may not work properly ")
+           }*/
+
+
+
+           /*if(history.length< 3){
+            alert("Register for more");
+            location.href = "../reg.html";
+           }else{
+            document.write("You can watch 3 pages for free")
+           }*/
+
+
+
+              //AJAX AJAX AJAX AJAX //
+
+
+            /*  function BodyLoad() {
+                var now  =new Date();
+                document.querySelector("p").innerHTML = `Page last Requested on ${now.toLocaleString()}`
+              }
+
+              function GetClick() {
+                var http = new XMLHttpRequest()
+                http.open("get","../data/help.txt",true)
+                http.send()
+                http.onreadystatechange = function() {
+                    if(http.readyState == 4 && http.status == 200){
+                        document.querySelector("pre").innerHTML = http.responseText;
+                    }
+                }
+              }*/
+
+         function BodyLoad() {
+            var now = new Date()
+            document.querySelector("p").innerHTML =  `${now.toLocaleString()}`
+         }
+         function GetClick() {
+            var http = new XMLHttpRequest() 
+            http.open("get","http://fakestoreapi.com/products/categories",true)
+            http.send()
+            http.onreadystatechange = function() {
+                if(http.readyState ==4 && http.status == 200){
+                    var categories = JSON.parse(http.responseText);
+                    categories.map(category=>{
+                        var li = document.createElement("li");
+                        li.innerHTML = category;
+                        document.querySelector("ul").appendChild(li);
+                    })
+                }
+            }
+         }
+
+         function GetProducts() {
+            var http = new XMLHttpRequest();
+            http.open("get","http://fakestoreapi.com/products");
+            http.send();
+            http.onreadystatechange = function() {
+                if(http.readyState ==4 && http.status == 200){
+                    var products = JSON.parse(http.responseText);
+                    products.map(product=>{
+                        var img = document.createElement("img");
+                        img.src = product.image;  // Set the source of the image
+                        img.alt = product.title;  // Set alt text for better accessibility
+                        img.style.width = "100px";  // You can set the size as per your design
+                        img.style.height = "100px"; 
+                        document.querySelector("div").appendChild(img);
+                    
+                    })
+                }
+            }
+         }
+
+
+
+
+
+
+
+    </script>
+</head>
+<body onload="BodyLoad()">
+    <!--<p></p>
+    <button onclick="GetClick()">Get Help</button>
+    <pre>
+
+    </pre>-->
+
+    <p></p>
+    <button onclick="GetClick()">Get Categories</button>
+    <button onclick="GetProducts()">Get Products</button>
+    <ul>
+
+    </ul>
+    <div class="container-fluid">
+
+    </div>
+
+    
+</body>
+</html> 
+
